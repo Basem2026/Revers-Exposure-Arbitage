@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="ar">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>RAM — Reverse Arbitrage (Forex & Crypto Futures) — Dashboard</title>
+<style>
+  :root{
+    --bg:#071024; --card:#081425; --muted:#94a3b8; --accent:#06b6d4; --glass: rgba(255,255,255,0.03);
+    --maxw:1100px; font-family: Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  }
+  html,body{height:100%;margin:0;background:linear-gradient(180deg,#04101c 0%, #071124 100%);color:#e6eef6;direction:rtl}
+  .wrap{max-width:var(--maxw);margin:20px auto;padding:18px;}
+  header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .brand{display:flex;gap:12px;align-items:center}
+  .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,#06b6d4,#7c3aed);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;color:#021124;box-shadow:0 6px 20px rgba(2,6,23,0.6)}
+  nav a{color:var(--muted);text-decoration:none;margin-left:12px;font-size:14px}
+  .hero{margin-top:20px;display:grid;grid-template-columns:1fr 380px;gap:20px;align-items:start}
+  .card{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 6px 30px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.03)}
+  h1{margin:0;font-size:26px}
+  p.lead{color:var(--muted);margin-top:10px;line-height:1.5}
+  .btn{background:var(--accent);color:#04202b;padding:10px 14px;border-radius:10px;font-weight:600;border:none;cursor:pointer}
+  .mutebtn{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted);padding:8px 10px;border-radius:10px}
+  .small{font-size:13px;color:var(--muted)}
+  .stats{display:flex;gap:12px;margin-top:12px}
+  .stat{flex:1;padding:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:10px;text-align:center}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  main section{margin-top:22px}
+  pre{white-space:pre-wrap;background:#021124;padding:12px;border-radius:8px;overflow:auto;font-size:13px;color:#bfeeee}
+  table{width:100%;border-collapse:collapse}
+  th,td{padding:8px;border-bottom:1px dashed rgba(255,255,255,0.03);text-align:right}
+  th{color:var(--muted);font-size:13px}
+  footer{margin-top:34px;padding:18px;text-align:center;color:var(--muted);font-size:13px}
+  .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);font-size:13px;margin-left:8px}
+  .notice{background:linear-gradient(90deg, rgba(255,165,0,0.06), rgba(255,255,255,0.01));border-left:4px solid rgba(255,165,0,0.8);padding:12px;border-radius:8px;color:#fff;margin-top:10px}
+  .tag{font-size:12px;padding:6px 8px;border-radius:8px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);display:inline-block;margin-left:6px}
+  .flex{display:flex;gap:12px;align-items:center}
+  .center{text-align:center}
+  .code{background:#021124;padding:10px;border-radius:8px;font-family:monospace;font-size:13px}
+  .two-cols{display:grid;grid-template-columns:2fr 1fr;gap:12px}
+  @media (max-width:900px){.hero{grid-template-columns:1fr} .two-cols{grid-template-columns:1fr} nav{display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand">
+      <div class="logo">RAM</div>
+      <div>
+        <div style="font-weight:700">Reverse Arbitrage Model</div>
+        <div class="small">Unified Forex & Crypto Futures — Fake Bot / Simulation Mode</div>
+      </div>
+    </div>
+    <nav>
+      <a href="#overview">نظرة عامة</a>
+      <a href="#whitepaper">الـ Whitepaper</a>
+      <a href="#futures">Futures</a>
+      <a href="#tokenomics">Tokenomics</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#legal">تحذيرات</a>
+      <a href="#contact">اتصل</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="card">
+      <h1>RAM — Unified Reverse Arbitrage Engine</h1>
+      <p class="lead">نظام موحّد لإدارة التعرض والـ Arbitrage عبر الفوركس والأسواق المستقبلية (Crypto Futures). يدعم تشغيل حساب High-Risk و حساب Reverse مع لوحة تحكم Tokenized للمدفوعات، تقارير، وAudit-ready logs.</p>
+
+      <div class="stats">
+        <div class="stat">
+          <div class="small">Platforms</div>
+          <div style="font-weight:700">MT4/MT5 • Binance Futures • Bybit • OKX • Others</div>
+        </div>
+        <div class="stat">
+          <div class="small">Mode</div>
+          <div style="font-weight:700">Simulation & Live (Controlled)</div>
+        </div>
+      </div>
+
+      <div class="cta">
+        <button class="btn" onclick="document.getElementById('whitepaper').scrollIntoView()">اقرأ الـ Whitepaper</button>
+        <button class="mutebtn" onclick="document.getElementById('futures').scrollIntoView()">دعم Futures</button>
+      </div>
+
+      <div class="notice">
+        <strong>تنبيه مهم:</strong> التصميم يركّز على حلول قانونية وتقنية. يجب عدم استخدامه لاستغلال أخطاء في أنظمة الوسطاء. اتبع دائماً الـ Responsible Disclosure وسياسات الوسطاء.
+      </div>
+    </div>
+
+    <aside class="card">
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div class="small">رمز المشروع</div>
+        <div style="font-weight:700;font-size:20px">RAM Token</div>
+        <div class="small">Utility token: subscriptions • staking • governance</div>
+        <div style="margin-top:8px">
+          <button class="btn" onclick="copyText('RAM')">نسخ الرمز</button>
+        </div>
+        <div style="margin-top:12px">
+          <div class="small">MVP Feature-set</div>
+          <div class="tag">Dashboard</div><div class="tag">API</div><div class="tag">Web3</div><div class="tag">Futures</div>
+        </div>
+        <div style="margin-top:14px">
+          <div class="small">Contact</div>
+          <div class="small">email@yourproject.example</div>
+        </div>
+      </div>
+    </aside>
+  </section>
+
+  <!-- WHITEPAPER + FUTURES -->
+  <section class="two-cols">
+    <div class="card" id="whitepaper">
+      <h2>الـ Whitepaper (مُحدّث يشمل الفوركس والفيوتشر)</h2>
+      <p class="small">ملخّص تقني وتشغيلي يشرح آلية العمل، دمج الفيوتشر، وحوكمة التوكن.</p>
+
+      <h3>1. الملخص التنفيذي</h3>
+      <p class="small">RAM هو محرك لإدارة التعرض والـ Arbitrage يعمل بنمط Dual-Account: حساب A (High-Risk / Aggressive) وحساب B (Reverse / Hedged). يتم توسيع الفكرة لتشمل أسواق Crypto Futures (Perpetuals & Quarterly futures) بحيث نستفيد من ميكانيكيات التسوية، التمويل (Funding), والـ Liquidations.</p>
+
+      <h3>2. الأسباب والفرص</h3>
+      <p class="small">الفيوتشر في الكريبتو يشترك مع الفوركس في نفس آليات الرافعة والسوق الثنائي الاتجاه (long/short). اختلاف التنفيذ، حجم السيولة، أو ظروف التسعير بين منصات/حسابات يخلق فرص لإدارة المخاطر وتحويل خسائر من حساب إلى أرباح في حساب آخر بطريقة محسوبة وآمنة.</p>
+
+      <h3>3. الدعم التقني للأسواق</h3>
+      <p class="small">الـ Engine يدعم حالياً:</p>
+      <ul class="small">
+        <li>MT4 / MT5 (EA ↔ API/WS)</li>
+        <li>Binance Futures (USDT-M, COIN-M) عبر REST & WebSocket</li>
+        <li>Bybit, OKX, MEXC, Bitget — دعم عبر REST/WebSocket وAPI Key</li>
+        <li>Pairs: Forex majors & minors، Crypto pairs & perpetuals (BTCUSDT, ETHUSDT...)</li>
+      </ul>
+
+      <h3>4. كيف يعمل مع الفيوتشر (Technical)</h3>
+      <ol class="small">
+        <li><strong>Signal & Execution</strong>: EA/Adapter يرسل التنفيذ (open/close/order-fill) + timestamps + fees إلى Backend.</li>
+        <li><strong>Reverse Engine</strong>: يقرر فتح صفقة معاكسة على حساب Hedged وفق قواعد: leverage mapping, dynamic sizing (USD-equivalent), funding cost adjustment.</li>
+        <li><strong>Funding & Fees Adjustment</strong>: عند فتح مراكز في الفيوتشر، Engine يحسب تكلفة الـ funding ويعدل حجم التداول لتأمين الربحية الصافية.</li>
+        <li><strong>Liquidation-aware sizing</strong>: Engine يطبق قواعد تمنع تعريض حساب Hedged لخطر تصفية مبالغ فيه (max leverage cap).</li>
+      </ol>
+
+      <h3>5. Architecture (محدث للفيوتشر)</h3>
+      <pre class="code">
+[MT5 EA]       [Binance Adapter]    [Bybit Adapter]   ...
+   |                 |                    |
+   +-----> [API Gateway / Auth / WS Server] <-----+
+                     |                          |
+                 [Reverse Engine]               |
+                     |                          |
+               [DB: Postgres / Logs]            |
+                     |                          |
+                 [Dashboard (React)] --------- Web3 (ethers.js)
+      </pre>
+
+      <h3>6. Risk Controls specific to Futures</h3>
+      <ul class="small">
+        <li>Mapping of leverage levels between accounts (e.g., A: 50x, B: 3x).</li>
+        <li>Dynamic sizing to keep USD-equivalent exposure aligned across assets.</li>
+        <li>Funding fee offsets: compute expected funding per period and net it from P&L.</li>
+        <li>Max open positions and daily drawdown kill-switch.</li>
+      </ul>
+
+      <h3>7. Data Requirements & Latency</h3>
+      <p class="small">الفيوتشر حساس للتأخير: استخدم WebSocket لfills وأسعار السوق، احفظ توقيت السيرفر (UTC) لكل حدث، وطبّق reconcile لوغاريثم لموازنة اختلاف التوقيت.</p>
+
+      <h3>8. Architecture: Exchanges Adapters</h3>
+      <p class="small">كل Exchange Adapter يقوم بـ:</p>
+      <ul class="small">
+        <li>مصادقة API Key/Secret (محفوظة مشفّرة في Vault)</li>
+        <li>إرسال أوامر (POST) واستقبال fills عبر WebSocket</li>
+        <li>حساب fees و funding و margin requirements</li>
+      </ul>
+
+      <h3>9. Example: Funding & Adjusted Sizing (Brief)</h3>
+      <pre class="code">
+// pseudo
+exposure_usd = size * price
+funding_est = exposure_usd * funding_rate * period_days
+adjusted_size = size + funding_est / price
+      </pre>
+
+      <h3>10. Appendix — Sample Solidity (ERC20 minimal)</h3>
+      <pre class="code">
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+
+contract RAMToken is ERC20 {
+    constructor(uint256 initialSupply) ERC20("RAM Token","RAM"){
+        _mint(msg.sender, initialSupply);
+    }
+}
+      </pre>
+      <div class="small">ملاحظة: مثال تعليمي — يلزم تدقيق أمني قبل النشر.</div>
+    </div>
+
+    <aside class="card" id="futures">
+      <h3>Futures Support — الملخص العملي</h3>
+      <p class="small">ندعم نقل الفكرة بالكامل إلى أسواق التداول المستقبليّة. النقاط الأساسية:</p>
+
+      <ul class="small">
+        <li><strong>Perpetuals vs Quarterly:</strong> التعامل مع funding في الـ Perpetuals و settlement في الـ Quarterly.</li>
+        <li><strong>Cross-exchange execution:</strong> فتح/إغلاق مراكز على منصات مختلفة مع مراعاة فروق الأسعار والتنفيذ.</li>
+        <li><strong>Adapters:</strong> Binance, Bybit, OKX, MEXC, Bitget — كل واحد بموديل fees/margin مختلف.</li>
+      </ul>
+
+      <h4 style="margin-top:10px">Integration checklist</h4>
+      <ol class="small">
+        <li>API keys per account (read/write) — تخزين مشفّر.</li>
+        <li>WebSocket for price & fills (low latency).</li>
+        <li>Reconcile engine to match fills with logs (idempotency).</li>
+        <li>Per-exchange funding & fee calculation module.</li>
+      </ol>
+
+      <h4 style="margin-top:10px">UI Widgets مُقترحة</h4>
+      <div class="small">
+        <div>- Live exposure bars (A vs B)</div>
+        <div>- Funding cost projections</div>
+        <div>- Per-exchange P&L breakdown</div>
+        <div>- Kill-switch & manual override</div>
+      </div>
+
+      <h4 style="margin-top:10px">Security notes</h4>
+      <div class="small">احتفظ بالمفاتيح في Vault، استخدم role-based access، ودوّن كل أوامر التنفيذ للتدقيق.</div>
+    </aside>
+  </section>
+
+  <!-- TOKENOMICS -->
+  <section class="card" id="tokenomics">
+    <h2>Tokenomics — تحديث لدعم Futures Use-Cases</h2>
+    <p class="small">نظراً لدعم الفيوتشر، نضيف آليات تتعلق برسوم المعاملات وpayback من treasury.</p>
+
+    <table>
+      <tr><th>بند</th><th>نسبة / كمية</th></tr>
+      <tr><td>Total Supply</td><td>1,000,000,000 RAM</td></tr>
+      <tr><td>Team & Founders</td><td>10% (vesting 24 شهر)</td></tr>
+      <tr><td>Treasury / Liquidity</td><td>20%</td></tr>
+      <tr><td>Dev & Partnerships</td><td>15%</td></tr>
+      <tr><td>Community / Airdrops</td><td>15%</td></tr>
+      <tr><td>Liquidity (DEX)</td><td>25%</td></tr>
+      <tr><td>Reserve / Legal</td><td>5%</td></tr>
+    </table>
+
+    <h4 style="margin-top:10px">آليات إضافية للفيوتشر</h4>
+    <ul class="small">
+      <li>Fee rebate: مستخدمي RAM يحصلون على خصم على رسوم execution / funding reports.</li>
+      <li>Staking: خصومات أعمق وaccess لميزات Enterprise.</li>
+      <li>Burn: جزء من رسوم الاشتراك وعمليات airdrop محكومة بالـ Treasury.</li>
+    </ul>
+  </section>
+
+  <!-- ROADMAP -->
+  <section class="card" id="roadmap">
+    <h2>Roadmap (محدث)</h2>
+    <div class="small">
+      <ol>
+        <li><strong>Phase 1 — MVP (0-1 شهر):</strong> Dashboard, basic EA API, Simulation (Forex+Perp mock).</li>
+        <li><strong>Phase 2 — Exchange Adapters (1-3 أشهر):</strong> Binance & Bybit adapters + WebSocket fills.</li>
+        <li><strong>Phase 3 — Legal & Audit (3-5 أشهر):</strong> Security audit, legal review, KYC plan.</li>
+        <li><strong>Phase 4 — Token Launch & Liquidity (5-8 أشهر):</strong> Deploy token, add LP, integrate pay-with-token.</li>
+        <li><strong>Phase 5 — Scale (9-12 أشهر):</strong> Enterprise sales, white-label, broker integrations (قانوني فقط).</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- UI SNIPPETS -->
+  <section class="card">
+    <h2>Quick UI Snippets — Dashboard Widgets</h2>
+    <p class="small">يمكنك نسخ هذه المقاطع لإضافتها إلى الواجهة مباشرة.</p>
+
+    <h4>Exposure Bars</h4>
+    <pre class="code">
+&lt;div class="card"&gt;
+  &lt;h4&gt;Exposure (A vs B)&lt;/h4&gt;
+  &lt;div&gt;A: $12,345 (50x)&lt;/div&gt;
+  &lt;div style="background:#032  ;height:12px;border-radius:6px"&gt;&lt;/div&gt;
+  &lt;div&gt;B: $2,345 (3x)&lt;/div&gt;
+  &lt;div style="background:#203 ;height:12px;border-radius:6px"&gt;&lt;/div&gt;
+&lt;/div&gt;
+    </pre>
+
+    <h4>Control Panel (Start / Stop / Kill-switch)</h4>
+    <pre class="code">
+&lt;button class="btn"&gt;Start System&lt;/button&gt;
+&lt;button class="mutebtn"&gt;Stop&lt;/button&gt;
+&lt;button style="background:#ff6b6b;color:#021124;padding:8px;border-radius:8px"&gt;KILL-SWITCH&lt;/button&gt;
+    </pre>
+  </section>
+
+  <!-- LEGAL -->
+  <section class="card" id="legal">
+    <h2>تحذيرات قانونية وأخلاقيات (مهم جدًا)</h2>
+    <ul class="small">
+      <li><strong>لا تُستخدم هذه الآليات لاستغلال ثغرات أو احتيال:</strong> أي استغلال أو خداع قد يعرضك للمساءلة الجنائية والمدنية.</li>
+      <li>قبل جمع أموال، إجراء مراجعة قانونية (Securities Laws): قد تُعتبر بعض أشكال التكييف المالي security/token offering في بعض الدول.</li>
+      <li>لو ربطت النظام بمنصات تداول، احصل على موافقات أو التزم بشروط الاستخدام الخاصة بالمنصة.</li>
+      <li>الالتزام بسياسات KYC/AML عند قبول ودائع من مستخدمين حقيقيين.</li>
+      <li>راجع سياسة exchanges حول cross-account behavior وcopy-trading.</li>
+    </ul>
+
+    <div class="notice">
+      <strong>تنبيه نهائي:</strong> تصميم المنتج ليوفر حلول شفافة ومشروعة أفضل من نماذج قد تنطوي على مخاطر أخلاقية أو قانونية. نوصي بالعمل مع محامٍ وخبير امتثال قبل التشغيل العام.
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="card" id="contact">
+    <h2>Contact & Next Steps</h2>
+    <p class="small">لو ترغب أبدأ بالـ MVP المطبق على Exchanges (Binance + Bybit) — أقدر أجهز لك repo جاهز يحتوي:</p>
+    <ul class="small">
+      <li>Frontend (React skeleton + widgets)</li>
+      <li>Backend (Node.js + socket.io + adapters skeleton)</li>
+      <li>Docker-compose example</li>
+      <li>Sample MT5 EA logger template (يكتب لوجات إلى API)</li>
+      <li>README للتشغيل على GitHub Actions / VPS</li>
+    </ul>
+
+    <div style="margin-top:12px">
+      <button class="btn" onclick="downloadHTML()">تحميل هذا الملف (index.html)</button>
+      <button class="mutebtn" onclick="alert('أرسل لي: 1) شبكات تريدها (BSC/Ethereum) 2) Exchanges target (Binance/Bybit/OKX) 3) هل تريد server-side signer؟')">أرسل المواصفات</button>
+    </div>
+  </section>
+
+  <footer class="card center">
+    &copy; <span id="year"></span> RAM — Reverse Arbitrage Model — All Rights Reserved.<br/>
+    هذا الملف للتصميم والتطوير التعليمي. التزامك بالقوانين واجب قبل أي إطلاق تجاري.
+  </footer>
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  function copyText(t){ navigator.clipboard?.writeText(t).then(()=> alert('تم النسخ: '+t)).catch(()=> alert('نسخ فشل')); }
+  function downloadHTML(){
+    const blob = new Blob([document.documentElement.outerHTML], {type: 'text/html'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a'); a.href = url; a.download = 'index.html'; document.body.appendChild(a); a.click();
+    setTimeout(()=>{ URL.revokeObjectURL(url); a.remove(); }, 3000);
+  }
+</script>
+</body>
+</html>
